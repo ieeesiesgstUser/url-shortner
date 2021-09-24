@@ -47,7 +47,10 @@ def redirection(short_url):
     if long_url:
         return redirect(long_url.long)
     else:
-        return f'<h1>Url doesnt exist</h1>'
+        return render_template('404.html')
+
+def new_func():
+    url_for("not_found")
 
 @app.route('/display/<url>')
 def display_short_url(url):
@@ -57,5 +60,9 @@ def display_short_url(url):
 def display_all():
     return render_template('all_urls.html', vals=Urls.query.all())
 
+@app.errorhandler(404)
+def not_found(e):
+  return render_template("404.html")
+
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000)
