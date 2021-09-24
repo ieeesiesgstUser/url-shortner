@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}View all URLS{% endblock %}
+
+{% block content %}
+{% for url in vals %}
+<p><strong>Custom URL key:</strong>{{url.short}}  |  <strong>Short URL:</strong>https://urls.ieeesiesgst.in/{{url.short}}  |  <strong>Long URL:</strong> {{url.long}}</p>
+{% endfor %}
+{% endblock %}
